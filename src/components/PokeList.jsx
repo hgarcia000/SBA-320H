@@ -33,14 +33,16 @@ function PokeList() {
     useEffect(() => { getData(); }, []);
 
     const res = data.map(element => {
-        // return <div key={data.indexOf(element) + 1} name={element.name}>{element.name.charAt(0).toLocaleUpperCase() + element.name.slice(1)}</div>
         return <PokeListItem key={data.indexOf(element) + 1} id={data.indexOf(element) + 1} name={element.name} />
     });
 
 
 
     return (
-        <div className="list-container">{res}</div>
+        <>
+            <h1 >Select a Pokémon</h1>
+            <div className="list-container">{res}</div>
+        </>
     )
 }
 
