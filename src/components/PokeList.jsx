@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import { useEffect, useState } from "react";
+import PokeListItem from "./PokeListItem";
 
 
 function PokeList() {
@@ -32,13 +33,14 @@ function PokeList() {
     useEffect(() => { getData(); }, []);
 
     const res = data.map(element => {
-        return <div key={data.indexOf(element) + 1} name={element.name}>{element.name.charAt(0).toLocaleUpperCase() + element.name.slice(1)}</div>
+        // return <div key={data.indexOf(element) + 1} name={element.name}>{element.name.charAt(0).toLocaleUpperCase() + element.name.slice(1)}</div>
+        return <PokeListItem key={data.indexOf(element) + 1} id={data.indexOf(element) + 1} name={element.name} />
     });
 
 
 
     return (
-        <div>{res}</div>
+        <div className="list-container">{res}</div>
     )
 }
 
