@@ -5,15 +5,14 @@
   text-align: center;
 }
 
-input{
+input {
   width: 250px;
   height: 25px;
   font-size: 18px;
 }
 
-.list-item{
+.list-item {
   display: flex;
-  /* width: 200px; */
   margin: 0.5rem;
   padding: 0 4%;
   border: 2px solid #242424;
@@ -22,20 +21,21 @@ input{
   justify-content: space-between;
 }
 
-.index{
+.index {
   font-weight: bold;
 }
 
-p.index{
+p.index {
   text-align: start;
   margin-left: 10px;
 }
-.wrapper{
+
+.wrapper {
   display: flex;
   align-items: center;
 }
 
-.card-container{
+.card-container {
   display: flex;
   padding: 1rem;
   border: 2px solid black;
@@ -44,61 +44,25 @@ p.index{
   background-color: #ccc;
 }
 
-p.card-container{
+p.card-container {
   margin: 5px;
   width: 80px;
   padding: 0.5rem;
 }
 
-.card-img{
+.card-img {
   border: 2px solid wheat;
   border-radius: 60px;
   background-color: rgb(158, 210, 231);
 }
 
-.type-container{
+.type-container {
   display: flex;
   justify-content: center;
 }
-.type{
+
+.type {
   width: 75px;
-  /* border: 2px solid gainsboro; */
   border-radius: 15px;
   margin: 0 2px;
 }
-
-/* .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-} */
