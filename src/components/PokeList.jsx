@@ -2,11 +2,17 @@ import axios from "axios";
 
 import { useEffect, useState } from "react";
 import PokeListItem from "./PokeListItem";
+import { Link, useParams } from "react-router-dom";
+import region from "../Region.js";
 
 
 function PokeList() {
+    const params = useParams();
+    const id = params.id;
 
-    const URL = 'https://pokeapi.co/api/v2/pokemon?limit=151';
+    const {name, limit, offset} = region(id)
+
+    const URL = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
 
     const [data, setData] = useState([{
         name: "",
@@ -19,7 +25,7 @@ function PokeList() {
 
             const result = listData.data.results;
 
-            console.log(result);
+            console.log(limit, offset);
 
             setData(result);
 
@@ -33,15 +39,22 @@ function PokeList() {
     useEffect(() => { getData(); }, []);
 
     const res = data.map(element => {
-        return <PokeListItem key={data.indexOf(element) + 1} id={data.indexOf(element) + 1} name={element.name} />
+        return <PokeListItem key={data.indexOf(element) + 1} id={data.indexOf(element) + offset + 1} name={element.name} />
     });
 
 
 
     return (
         <>
+        <Link to={'/'}>
+        <p>Go Back</p>
+        </Link>
+        <h2>{name} Region</h2>
             <h1 >Select a Pokémon</h1>
             <div className="list-container">{res}</div>
+        <Link to={'/'}>
+        <p>Go Back</p>
+        </Link>
         </>
     )
 }

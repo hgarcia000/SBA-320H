@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom";
 
 
-function RegionListItem({ id, name, range, limit, offset }) {
+function RegionListItem({ id, name, range }) {
 
     return (
-        <div className="list-item"> {name} <span className="index">{range}</span> </div>
+        <Link to={`/pokelist/${id}`}>
+            <div className="list-item"> {name} <span className="index">{range}</span> </div>
+        </Link>
     );
 }
 
