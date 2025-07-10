@@ -1,57 +1,63 @@
 
 const region = (id) => {
-        switch (id) {
-            case '1':
-                
-                return {
-                        name:'Kanto',
-                        limit: 151,
-                        offset: 0
-                    };
-        
-            case '2':
-                
-                return {
-                        name:'Johto',
-                        limit: 100,
-                        offset: 151
-                    };
-        
-            case '3':
-                
-                return {
-                        name:'Hoenn',
-                        limit: 135,
-                        offset: 251
-                    };
-        
-            case '4':
-                
-                return {
-                        name:'Sinnoh',
-                        limit: 107,
-                        offset: 386
-                    };
-        
-            case '5':
-                
-                return {
-                        name:'Unova',
-                        limit: 156,
-                        offset: 493
-                    };
-        
-            case '6':
-                
-                return {
-                        name:'Kalos',
-                        limit: 72,
-                        offset: 649
-                    };
-        
-            default:
-                return;
-        }
-    }
+    switch (id) {
+        case '1':
 
-    export default region
+            return {
+                name: 'Kanto',
+                range: '001 - 151',
+                limit: 151,
+                offset: 0
+            };
+
+        case '2':
+
+            return {
+                name: 'Johto',
+                range: '152 - 251',
+                limit: 100,
+                offset: 151
+            };
+
+        case '3':
+
+            return {
+                name: 'Hoenn',
+                range: '252 - 386',
+                limit: 135,
+                offset: 251
+            };
+
+        case '4':
+
+            return {
+                name: 'Sinnoh',
+                range: '387 - 493',
+                limit: 107,
+                offset: 386
+            };
+
+        case '5':
+
+            return {
+                name: 'Unova',
+                range: '494 - 649',
+                limit: 156,
+                offset: 493
+            };
+
+        case '6':
+
+            return {
+                name: 'Kalos',
+                range: '650 - 721',
+                limit: 72,
+                offset: 649
+            };
+
+        default:
+            return;
+    }
+}
+
+export default region
