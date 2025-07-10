@@ -32,7 +32,7 @@ function PokeCard() {
     const audioRef = useRef();
 
     const [data, setData] = useState(
-        {imgSrc: null, monName: '', genus: '', typeNames: [], description: '', latest: ''}
+        {imgSrc: null, monName: '', genus: '', typeNames: [], description: '', latest: null}
     );
 
     const URLs = [`https://pokeapi.co/api/v2/pokemon/${id}`, `https://pokeapi.co/api/v2/pokemon-species/${id}`]
@@ -61,6 +61,13 @@ function PokeCard() {
         }
     }
 
+    const handleCry = () => {
+        
+        audioRef.current.volume = 0.12;
+        audioRef.current.play()
+
+    }
+
     useEffect(() => { 
         getMon();
         audioRef.current.volume = 0.12;
@@ -74,7 +81,7 @@ function PokeCard() {
     return(
         <>
         <div>
-            <img src={data.imgSrc} alt={data.monName} />
+            <img src={data.imgSrc} alt={data.monName} onClick={handleCry}/>
             <div>{data.monName}</div>
             <div>{data.genus}</div>
             <div className="type-container">{types}</div>
