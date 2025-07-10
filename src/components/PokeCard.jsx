@@ -80,12 +80,14 @@ function PokeCard() {
 
     return(
         <>
-        <div>
-            <img src={data.imgSrc} alt={data.monName} onClick={handleCry}/>
-            <div>{data.monName}</div>
-            <div>{data.genus}</div>
+        <div className="card-container">
+            <img className="card-img" src={data.imgSrc} alt={data.monName} onClick={handleCry}/>
+            <div className="card-content">
+            <h1>{data.monName}</h1>
+            <h3>{data.genus}</h3>
             <div className="type-container">{types}</div>
             <div>{data.description}</div>
+            </div>
             <audio ref={audioRef} src={data.latest} />
         </div>
         <Link to={`/pokelist/${regionId(id)}`}><div>Go Back to Region's Pokémon List</div></Link>
