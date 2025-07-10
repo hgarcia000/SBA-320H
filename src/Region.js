@@ -56,7 +56,12 @@ const region = (id) => {
             };
 
         default:
-            return;
+            return {
+                name: 'Generation VI',
+                range: '001 - 721',
+                limit: 721,
+                offset: 0
+            };
     }
 }
 

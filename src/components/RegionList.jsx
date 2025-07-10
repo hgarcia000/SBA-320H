@@ -4,10 +4,10 @@ import RegionListItem from "./RegionListItem";
 
 function RegionList() {
 
-    const regionIndecies = ['1', '2', '3', '4', '5', '6'];
+    const regionIndecies = ['0', '1', '2', '3', '4', '5', '6'];
 
     const regionListItems = regionIndecies.map(element => {
-        return <RegionListItem key={regionIndecies.indexOf(element) + 1} id={element} name={region(element).name} range={region(element).range} />
+        return <RegionListItem key={regionIndecies.indexOf(element)} id={element} name={region(element).name} range={region(element).range} />
     })
 
     return (

@@ -49,7 +49,7 @@ function PokeList() {
         <Link to={'/'}>
         <p>Go Back</p>
         </Link>
-        <h2>{name} Region</h2>
+        <h2>{name} {id === '0' ? '' : 'Region'}</h2>
             <h1 >Select a Pokémon</h1>
             <div className="list-container">{res}</div>
         <Link to={'/'}>

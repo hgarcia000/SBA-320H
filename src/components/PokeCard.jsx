@@ -88,7 +88,8 @@ function PokeCard() {
             <div>{data.description}</div>
             <audio ref={audioRef} src={data.latest} />
         </div>
-        <Link to={`/pokelist/${regionId(id)}`}><div>Back to List</div></Link>
+        <Link to={`/pokelist/${regionId(id)}`}><div>Go Back to Region's Pokémon List</div></Link>
+        <Link to={`/pokelist/0`}><div>Go Back to All Pokémon List</div></Link>
         </>
     )
 }
