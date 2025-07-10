@@ -20,6 +20,15 @@
   font-weight: bold;
 }
 
+p.index{
+  text-align: start;
+  margin-left: 10px;
+}
+.wrapper{
+  display: flex;
+  align-items: center;
+}
+
 .card-container{
   display: flex;
   padding: 1rem;
@@ -27,6 +36,12 @@
   border-radius: 60px;
   color: #333;
   background-color: #ccc;
+}
+
+p.card-container{
+  margin: 5px;
+  width: 80px;
+  padding: 0.5rem;
 }
 
 .card-img{

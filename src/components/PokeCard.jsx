@@ -32,7 +32,7 @@ function PokeCard() {
     const audioRef = useRef();
 
     const [data, setData] = useState(
-        {imgSrc: null, monName: '', genus: '', typeNames: [], description: '', latest: null}
+        {imgSrc: null, monName: '', genus: '', typeNames: [], hieght: '', weight: '', description: '', latest: null}
     );
 
     const URLs = [`https://pokeapi.co/api/v2/pokemon/${id}`, `https://pokeapi.co/api/v2/pokemon-species/${id}`]
@@ -72,7 +72,7 @@ function PokeCard() {
         getMon();
         audioRef.current.volume = 0.12;
         audioRef.current.play()
-     }, []);
+     }, [id]);
 
     const types = data.typeNames.map(element => {
         return <div key={data.typeNames.indexOf(element) + 1 } className="type" id={element}>{element.charAt(0).toLocaleUpperCase() + element.slice(1)}</div>
@@ -80,15 +80,20 @@ function PokeCard() {
 
     return(
         <>
+        <div className="wrapper">
+            { id !== '1' ? <Link to={`/pokemon/${Number(id) - 1}`}><p className="card-container">← Previous</p></Link> : null}
         <div className="card-container">
             <img className="card-img" src={data.imgSrc} alt={data.monName} onClick={handleCry}/>
             <div className="card-content">
+                <p className="index">{'# ' + id}</p>
             <h1>{data.monName}</h1>
             <h3>{data.genus}</h3>
             <div className="type-container">{types}</div>
             <div>{data.description}</div>
             </div>
             <audio ref={audioRef} src={data.latest} />
+        </div>
+            { id !== '721' ? <Link to={`/pokemon/${Number(id) + 1}`}><p className="card-container">Next →</p></Link> : null}
         </div>
         <Link to={`/pokelist/${regionId(id)}`}><div>Go Back to Region's Pokémon List</div></Link>
         <Link to={`/pokelist/0`}><div>Go Back to All Pokémon List</div></Link>
