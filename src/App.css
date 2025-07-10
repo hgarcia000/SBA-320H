@@ -19,6 +19,17 @@
   font-weight: bold;
 }
 
+.type-container{
+  display: flex;
+  justify-content: center;
+}
+.type{
+  width: 60px;
+  /* border: 2px solid gainsboro; */
+  border-radius: 15px;
+  margin: 0 2px;
+}
+
 /* .logo {
   height: 6em;
   padding: 1.5em;

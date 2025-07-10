@@ -1,14 +1,38 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useEffect, useRef, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import '../Types.css';
 
 
 function PokeCard() {
 
     const { id } = useParams();
 
+    const regionId = (id) => {
+        if (Number(id) <= 151) {
+            return 1;
+        }
+        if (Number(id) <= 251) {
+            return 2;
+        }
+        if (Number(id) <= 386) {
+            return 3;
+        }
+        if (Number(id) <= 493) {
+            return 4;
+        }
+        if (Number(id) <= 649) {
+            return 5;
+        }
+        
+        return 6;
+
+    }
+
+    const audioRef = useRef();
+
     const [data, setData] = useState(
-        {imgSrc: null, monName: '', genus: '', typeNames: '', description: '', latest: ''}
+        {imgSrc: null, monName: '', genus: '', typeNames: [], description: '', latest: ''}
     );
 
     const URLs = [`https://pokeapi.co/api/v2/pokemon/${id}`, `https://pokeapi.co/api/v2/pokemon-species/${id}`]
@@ -26,7 +50,7 @@ function PokeCard() {
             const description = monData2.data.flavor_text_entries.find((e) => {return e.language.name === "en" && e.version.name === 'omega-ruby'}).flavor_text;
             const {latest} = monData1.data.cries;
 
-            console.log(typeNames);
+            console.log(latest);
 
             setData({imgSrc, monName, genus, typeNames, description, latest});
 
@@ -37,17 +61,28 @@ function PokeCard() {
         }
     }
 
-    useEffect(() => { getMon(); }, [])
+    useEffect(() => { 
+        getMon();
+        audioRef.current.volume = 0.12;
+        audioRef.current.play()
+     }, []);
+
+    const types = data.typeNames.map(element => {
+        return <div key={data.typeNames.indexOf(element) + 1 } className="type" id={element}>{element.charAt(0).toLocaleUpperCase() + element.slice(1)}</div>
+    })
 
     return(
+        <>
         <div>
             <img src={data.imgSrc} alt={data.monName} />
             <div>{data.monName}</div>
             <div>{data.genus}</div>
-            <div>{data.typeNames}</div>
+            <div className="type-container">{types}</div>
             <div>{data.description}</div>
-            <div>Battle Cry</div>
+            <audio ref={audioRef} src={data.latest} />
         </div>
+        <Link to={`/pokelist/${regionId(id)}`}><div>Back to List</div></Link>
+        </>
     )
 }
 
