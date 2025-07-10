@@ -12,7 +12,7 @@ function PokeList() {
 
     const {name, limit, offset} = region(id)
 
-    const URL = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
+    const URL = `https://pokeapi.co/api/v2/pokemon-species?limit=${limit}&offset=${offset}`;
 
     const [data, setData] = useState([{
         name: "",
