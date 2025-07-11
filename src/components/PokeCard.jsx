@@ -77,6 +77,7 @@ function PokeCard() {
 
     return (
         <>
+        <p>Click on the image to hear the Pokémon's cry!</p>
             <div className="wrapper">
                 {id !== '1' ? <Link to={`/pokemon/${Number(id) - 1}`}><p className="card-container">← Previous</p></Link> : null}
                 <div className="card-container">
