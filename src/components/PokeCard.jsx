@@ -69,8 +69,6 @@ function PokeCard() {
 
     useEffect(() => {
         getMon();
-        audioRef.current.volume = 0.12;
-        audioRef.current.play()
     }, [id]);
 
     const types = data.typeNames.map(element => {
