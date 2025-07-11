@@ -32,7 +32,7 @@ function PokeCard() {
     const audioRef = useRef();
 
     const [data, setData] = useState(
-        { imgSrc: null, monName: '', genus: '', typeNames: [], hieght: '', weight: '', description: '', latest: null }
+        { imgSrc: null, monName: '', genus: '', typeNames: [], height: '', weight: '', description: '', latest: null, stats: [{ base_stat: 0 }, { base_stat: 0 }, { base_stat: 0 }, { base_stat: 0 }, { base_stat: 0 }, { base_stat: 0 }] }
     );
 
     const URLs = [`https://pokeapi.co/api/v2/pokemon/${id}`, `https://pokeapi.co/api/v2/pokemon-species/${id}`]
@@ -45,14 +45,13 @@ function PokeCard() {
             const imgSrc = monData1.data.sprites.other['official-artwork'].front_default;
             const monName = monData2.data.name.charAt(0).toLocaleUpperCase() + monData2.data.name.slice(1);
             const { genus } = monData2.data.genera.find((e) => { return e.language.name === "en" });
-            const { types } = monData1.data;
+            const { types, height, weight, stats } = monData1.data;
             const typeNames = types.map(e => { return e.type.name })
             const description = monData2.data.flavor_text_entries.find((e) => { return e.language.name === "en" && e.version.name === 'omega-ruby' }).flavor_text;
             const { latest } = monData1.data.cries;
 
-            console.log(latest);
 
-            setData({ imgSrc, monName, genus, typeNames, description, latest });
+            setData({ imgSrc, monName, genus, typeNames, description, latest, height, weight, stats });
 
         } catch (error) {
 
@@ -89,7 +88,18 @@ function PokeCard() {
                         <h1>{data.monName}</h1>
                         <h3>{data.genus}</h3>
                         <div className="type-container">{types}</div>
+                        <div><strong>Height: </strong>{data.height / 10} m</div>
+                        <div><strong>Weight: </strong>{data.weight / 10} kg</div>
                         <div>{data.description}</div>
+                        <div className="stats" >
+                            <div><div>HP</div><div>Attack</div><div>Defense</div><div>Special Atk</div><div>Special Def</div><div>Speed</div></div>
+                            <div><div className="stat-bar" style={{ width: `${data.stats[0].base_stat}px` }} >{data.stats[0].base_stat}</div>
+                                <div className="stat-bar" style={{ width: `${data.stats[1].base_stat}px` }} >{data.stats[1].base_stat}</div>
+                                <div className="stat-bar" style={{ width: `${data.stats[2].base_stat}px` }} >{data.stats[2].base_stat}</div>
+                                <div className="stat-bar" style={{ width: `${data.stats[3].base_stat}px` }} >{data.stats[3].base_stat}</div>
+                                <div className="stat-bar" style={{ width: `${data.stats[4].base_stat}px` }} >{data.stats[4].base_stat}</div>
+                                <div className="stat-bar" style={{ width: `${data.stats[5].base_stat}px` }} >{data.stats[5].base_stat}</div></div>
+                        </div>
                     </div>
                     <audio ref={audioRef} src={data.latest} />
                 </div>

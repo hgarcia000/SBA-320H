@@ -66,3 +66,17 @@ p.card-container {
   border-radius: 15px;
   margin: 0 2px;
 }
+
+.stats {
+  text-align: left;
+  font-weight: bold;
+  margin-left: 5px;
+  display: flex;
+}
+
+.stat-bar {
+  width: 10px;
+  height: 20px;
+  margin-left: 4px;
+  border: 2px solid;
+}
